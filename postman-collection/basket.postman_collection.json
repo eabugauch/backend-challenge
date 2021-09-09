@@ -1,0 +1,139 @@
+{
+	"info": {
+		"_postman_id": "3a19dafb-5ff2-43bc-b86a-6a221d7bb834",
+		"name": "basket",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get amount",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-client-key",
+						"value": "{{x-client-key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/basket/{{basket_id}}/amount",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"basket",
+						"{{basket_id}}",
+						"amount"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-client-key",
+						"value": "{{x-client-key}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"code\": \"TSHIRT\",\n    \"quantity\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/basket/{{basket_id}}/product",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"basket",
+						"{{basket_id}}",
+						"product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "new basket",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-client-key",
+						"value": "{{x-client-key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/basket",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"basket"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove basket",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-client-key",
+						"value": "{{x-client-key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/basket/{{basket_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"basket",
+						"{{basket_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get basket",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-client-key",
+						"value": "{{x-client-key}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/basket/{{basket_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"basket",
+						"{{basket_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

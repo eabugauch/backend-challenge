@@ -1,0 +1,197 @@
+swagger: "2.0"
+info:
+  description: "This application is the lana code challenge solution."
+  version: "1.0.0"
+  title: "Swagger Lana Basket"
+  contact:
+    email: "e.abugauch1@gmail.com"
+tags:
+  - name: "basket lana"
+    description: "Everything about basket"
+paths:
+  /basket:
+    post:
+      tags:
+        - "basket"
+      summary: "Add a new basket"
+      operationId: "addBasket"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "is not necessary"
+          schema:
+            $ref: "#/definitions/EmptyRequest"
+      responses:
+        "201":
+          description: "Created"
+          schema:
+            $ref: "#/definitions/NewBasket"
+        "401":
+          description: "unauthorized"
+  /basket/{basket_id}/product:
+    put:
+      tags:
+        - "basket"
+      summary: "Add a product to a basket"
+      description: ""
+      operationId: "AddProduct"
+      parameters:
+        - name: "basket_id"
+          in: "path"
+          description: "ID of the basket"
+          required: true
+          type: "string"
+        - in: "body"
+          name: "body"
+          description: "Product object that needs to be added to the basket"
+          required: true
+          schema:
+            $ref: "#/definitions/Product"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/Basket"
+        "400":
+          description: "basket_id is required or invalid body"
+        "401":
+          description: "unauthorized"
+        "500":
+          description: "internal server error"
+  /basket/{basket_id}/amount:
+    get:
+      tags:
+        - "basket"
+      summary: "Get the total amount in a basket"
+      description: ""
+      operationId: "GetAmount"
+      parameters:
+        - name: "basket_id"
+          in: "path"
+          description: "ID of the basket"
+          required: true
+          type: "string"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Ok"
+          schema:
+            $ref: "#/definitions/GetAmountResponse"
+        "400":
+          description: "basket_id is required"
+        "401":
+          description: "unauthorized"
+        "500":
+          description: "internal server error"
+  /basket/{basket_id}:
+    delete:
+      tags:
+        - "basket"
+      summary: "Remove the basket"
+      description: ""
+      operationId: "RemoveBasket"
+      parameters:
+        - name: "basket_id"
+          in: "path"
+          description: "ID of the basket"
+          required: true
+          type: "string"
+      consumes:
+        - "application/json"
+      produces:
+        - "application/json"
+      responses:
+        "204":
+          description: "no content"
+          schema:
+            $ref: "#/definitions/EmptyRequest"
+        "400":
+          description: "basket_id is required"
+        "401":
+          description: "unauthorized"
+        "500":
+          description: "internal server error"
+definitions:
+  Product:
+    type: "object"
+    properties:
+      product_id:
+        type: "integer"
+        example: "PEN"
+        format: "int64"
+      quantity:
+        type: "integer"
+        example: 1
+        format: "int64"
+  GetAmountResponse:
+    type: "object"
+    properties:
+      basket_id:
+        type: "string"
+        example: "c4vq67o6n88kp5l5p1o0"
+      amount:
+        type: "number"
+        example: 5
+  ProductEmpty:
+    type: "object"
+  Basket:
+    type: "object"
+    required:
+      - "name"
+      - "photoUrls"
+    properties:
+      basket_id:
+        type: "string"
+        example: "c4vq67o6n88kp5l5p1o0"
+      products:
+        type: "object"
+        properties:
+          pen:
+            type: "string"
+            example: "1"
+      amount:
+        type: number
+        example: 5
+      date_created:
+        type: "string"
+        example: "creation date"
+        description: "date of creation of the basket"
+      date_last_updated:
+        type: "string"
+        example: "09-13-2021 19:14:39"
+        description: "last date of modification of the basket"
+  NewBasket:
+    type: "object"
+    required:
+      - "name"
+      - "photoUrls"
+    properties:
+      basket_id:
+        type: "string"
+        example: "c4vq67o6n88kp5l5p1o0"
+      products:
+        type: "object"
+      date_created:
+        type: "string"
+        example: "09-13-2021 19:14:39"
+        description: "date of creation of the basket"
+      date_last_updated:
+        type: "string"
+        example: ""
+        description: "last date of modification of the basket"
+  EmptyRequest:
+    type: "object"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
