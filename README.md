@@ -7,7 +7,7 @@ eabugauch/backend-challenge is the solution to the lana code challenge.
 
 ## Running local
 
-In order to run the project locally, an environment variable called SECRET_X_CALLER_SCOPES_ADMIN must be created with the value to be sent in the x-caller-scopes header.
+In order to run the project locally, an environment variable called X_CLIENT_KEY must be created with the value to be sent in the x-client-key header.
 In the following [folder](./postman-collection) you will find different endpoints to be able to do your tests
 
 ## Documentation

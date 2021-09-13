@@ -33,7 +33,6 @@ func main() {
 		log.Print(err.Error())
 		os.Exit(ExitCodeFailToCreateWebApplication)
 	}
-
 	log.Print("server exit")
 	os.Exit(ExitCodeOK)
 }
